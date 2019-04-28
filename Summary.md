@@ -4,3 +4,4 @@
 
 2. [ python general function ](./day02-general-function/readme.md)
  
+3. [ python list & array ](./day03-list/readme.md)

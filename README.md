@@ -7,6 +7,19 @@
 
 2. [ python general function ](./day02-general-function)
 
+3. [ python list & array ](./day03-list)
+
+4. [ python i/o ](./day04-io)
+
+
+## TODO
+
+* <input type="checkbox"/> python i/o
+
+* <input type="checkbox"/> NumPy
+
+* <input type="checkbox"/> Pandas
+
 ## Others
 
 ### Reference
