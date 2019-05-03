@@ -11,10 +11,10 @@
 
 4. [ python i/o ](./day04-io)
 
+5. [ Numpy Array](./day05-numpy-array)
+
 
 ## TODO
-
-* <input type="checkbox"/> python i/o
 
 * <input type="checkbox"/> NumPy
 

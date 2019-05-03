@@ -5,3 +5,7 @@
 2. [ python general function ](./day02-general-function/readme.md)
  
 3. [ python list & array ](./day03-list/readme.md)
+
+4. [ python I/O ](./day04-io/readme.md)
+
+5. [ Numpy Array](./day05-numpy-array/readme.md)
