@@ -9,3 +9,5 @@
 4. [ python I/O ](./day04-io/readme.md)
 
 5. [ Numpy Array](./day05-numpy-array/readme.md)
+
+6. [ Numpy Array Function](./day06-numpy-array-function/readme.md)

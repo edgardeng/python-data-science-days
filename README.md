@@ -13,6 +13,8 @@
 
 5. [ Numpy Array](./day05-numpy-array)
 
+6. [ Numpy Array Function](./day06-numpy-array-function)
+
 
 ## TODO
 
