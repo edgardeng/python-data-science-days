@@ -11,3 +11,6 @@
 5. [ Numpy Array](./day05-numpy-array/readme.md)
 
 6. [ Numpy Array Function](./day06-numpy-array-function/readme.md)
+
+7. [ Numpy Array Aggregate](./day07-numpy-array-aggregate/readme.md)
+

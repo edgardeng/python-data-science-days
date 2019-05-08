@@ -15,6 +15,9 @@
 
 6. [ Numpy Array Function](./day06-numpy-array-function)
 
+7. [ Numpy Array Aggregate](./day07-numpy-array-aggregate)
+
+
 
 ## TODO
 
