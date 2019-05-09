@@ -14,3 +14,4 @@
 
 7. [ Numpy Array Aggregate](./day07-numpy-array-aggregate/readme.md)
 
+8. [ Numpy Array Broadcast](./day08-numpy-array-boardcast/readme.md)
