@@ -19,11 +19,31 @@
 
 8. [ Numpy Array Broadcast](./day08-numpy-array-boardcast)
 
+9. [ Numpy Comparison](./day09-numpy-comparison)
+
+
 ## TODO
 
 * <input type="checkbox"/> NumPy
 
 * <input type="checkbox"/> Pandas
+
+
+## How to Build GitBook
+
+```
+## install gitbook
+npm install gitbook -g  
+npm install gitbook-cli -g 
+gitbook --version
+
+## build boook
+gitbook build
+gitbook pdf ./ ./a.pdf  # 生成 pdf
+
+## build a serve
+gitbook serve
+```
 
 ## Others
 
