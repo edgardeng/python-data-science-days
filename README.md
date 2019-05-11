@@ -21,6 +21,9 @@
 
 9. [ Numpy Comparison](./day09-numpy-comparison)
 
+10. [ Numpy Fancy Index](./day10-numpy-array-index)
+
+
 
 ## TODO
 
