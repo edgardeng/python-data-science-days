@@ -23,7 +23,9 @@
 
 10. [ Numpy Fancy Index](./day10-numpy-array-index)
 
+11. [ Numpy Sort](./day11-numpy-array-sort)
 
+12. [ Numpy Structured Array](./day12-numpy-structured-array)
 
 ## TODO
 
