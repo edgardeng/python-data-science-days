@@ -23,3 +23,7 @@
 11. [ Numpy Sort](./day11-numpy-array-sort/readme.md)
 
 12. [ Numpy Structured Array](./day12-numpy-structured-array/readme.md)
+
+13. [ Matplotlib Introduction](./day13-matplotlib-introduction/readme.md)
+
+14. [ Matplotlib Chart](./day14-matplotlib-chart/readme.md)

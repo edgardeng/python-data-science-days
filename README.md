@@ -27,12 +27,17 @@
 
 12. [ Numpy Structured Array](./day12-numpy-structured-array)
 
+13. [ Matplotlib Introduction](./day13-matplotlib-introduction)
+
+14. [ Matplotlib Chart](./day14-matplotlib-chart)
+
+
+
 ## TODO
 
 * <input type="checkbox"/> NumPy
 
 * <input type="checkbox"/> Pandas
-
 
 ## How to Build GitBook
 
@@ -55,3 +60,41 @@ gitbook serve
 ### Reference
 
 * [Python DataScience Handbook](https://github.com/jakevdp/PythonDataScienceHandbook)
+
+* [Awesome Data Science](https://github.com/okulbilisim/awesome-datascience): Here you’ll find every step that you need to take till the end of your journey.
+
+* [Data Science Resource](https://github.com/jonathan-bower/DataScienceResources): Data science tutorials to help you conquer this skill set. 
+
+* [Text Books in Data Science](https://github.com/chaconnewu/free-data-science-books): A compiled list of  best books on machine learning, data mining, statistics, data visualization etc.
+
+#### Algorithms
+
+* [Data Science Algorithms](https://github.com/nborwankar/LearnDataScience): Here’s a comprehensive overview & explanation of algorithms such as Linear Regression, Logistic Regression, K-Mean Clustering, Random Forest.
+
+* [Statistics and ML](https://github.com/DrSkippy/Data-Science-45min-Intros):  Here’s a list of tutorials to become efficient in your day to day programming. It covers python pandas, machine learning algorithms, statistics and data visualization
+
+#### Machine Learning
+
+* [Scikit Learn](https://github.com/scikit-learn/scikit-learn): Scikit learn is a python library for machine learning. This repository has everything to offer to help you learn about machine learning in Python. ( Hint: Dig Deeper )
+
+* [Awesome Machine Learning](https://github.com/josephmisiti/awesome-machine-learning): Here is an ultimate list of tutorials, resources, guides for machine learning, data analysis, natural language processing, data visualization in all the programming languages like Python, R, Java, Go, C++, Swift. Choose accordingly.
+
+* [Complete Machine Learning](https://github.com/rasbt/pattern_classification): Here’s a collection of  tutorials and examples for solving problems using machine learning. It consist of beginning to end steps of ML covering stages such as model evaluation, implementation of ML algorithms, data visualization etc.
+
+* [Parallel Machine Learning](https://github.com/ogrisel/parallel_ml_tutorial): This tutorial is on using scikit learn and ipython for parallel machine learning. Here you’ll find a 2 hours long video from Pycon 2013 with lecture notes and other useful resources.
+
+* [Machine Learning Courses](https://github.com/prakhar1989/awesome-courses#machine-learning): Here’s a list of Best Machine Learning Courses in the world.
+
+#### Deep Learning
+
+* [Caffe](https://github.com/BVLC/caffe): a deep learning framework made with expression, speed, and modularity in mind. This repository consist of installation instructions and other recommended tutorials to help you learn this framework properly.
+
+* [Awesome Deep Learning](https://github.com/ChristosChristofidis/awesome-deep-learning): Here’s a curated list of tutorials on Deep Learning which includes deep learning courses, free books, videos and lectures, papers and other useful resources to follow.
+
+* [Deep Learning in Python](https://github.com/andersbll/deeppy): Here’s a complete tutorial on implementation of Deep Learning in Python
+
+* [Recurrent Neural Networks](https://github.com/kjw0612/awesome-rnn): Here’s a awesome list of dedicated resources for RNN. If you have longed to curate the resources for RNN, you’ve like to stop here and take a glance. This guide consists of codes, lectures, books and resources on multiple applications of RNN.
+
+#### Data Visualization
+
+* [matplotlib](https://github.com/matplotlib/matplotlib): plotting with Python
