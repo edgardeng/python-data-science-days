@@ -258,5 +258,143 @@ __filling__
 
 > Note: if a previous value is not available during a forward fill, the NA value remains.
 
+---
+
+### Hierarchical Indexing 分层索引
+
+
+####  A Multiply Indexed Series 多重索引
+
+
+With this indexing scheme, you can straightforwardly index or slice the series based on this multiple index:
+#%%
+pop[('California', 2010):('Texas', 2000)]
+
+
+#### MultiIndex as extra dimension
+
+Each extra level in a multi-index represents an extra dimension of data; taking advantage of this property gives us much more flexibility in the types of data we can represent
+
+
+####  Methods of MultiIndex Creation
+
+```python
+
+df = pd.DataFrame(np.random.rand(4, 2),
+                  index=[['a', 'a', 'b', 'b'], [1, 2, 1, 2]],
+                  columns=['data1', 'data2'])
+
+# pass a dictionary with appropriate tuples as keys
+
+data = {('California', 2000): 33871648,
+        ('California', 2010): 37253956,
+        ('Texas', 2000): 20851820,
+        ('Texas', 2010): 25145561,
+        ('New York', 2000): 18976457,
+        ('New York', 2010): 19378102}
+pd.Series(data)
+
+```
+
+#### Explicit MultiIndex constructors
+
+For more flexibility in how the index is constructed, you can instead use the class method constructors available in the ``pd.MultiIndex``.
+For example, as we did before, you can construct the ``MultiIndex`` from a simple list of arrays giving the index values within each level:
+```python
+
+pd.MultiIndex.from_arrays([['a', 'a', 'b', 'b'], [1, 2, 1, 2]])
+
+# from a list of tuples 
+pd.MultiIndex.from_tuples([('a', 1), ('a', 2), ('b', 1), ('b', 2)])
+
+# from a Cartesian product of single indices:
+pd.MultiIndex.from_product([['a', 'b'], [1, 2]])
+
+#  using its internal encoding by passing `levels` and `labels`
+pd.MultiIndex(levels=[['a', 'b'], [1, 2]], labels=[[0, 0, 1, 1], [0, 1, 0, 1]])
+```
+
+#### MultiIndex level names
+
+This can be accomplished by passing the ``names`` argument to any of the above ``MultiIndex`` constructors, or by setting the ``names`` attribute of the index after the fact:`pop.index.names = ['state', 'year']`
+
+#### MultiIndex for columns
+
+```python
+    index = pd.MultiIndex.from_product([[2013, 2014], [1, 2]], names=['year', 'visit'])
+    columns = pd.MultiIndex.from_product([['Bob', 'Guido', 'Sue'], ['HR', 'Temp']], names=['subject', 'type'])
+    data = np.round(np.random.randn(4, 6), 1) # mock some data
+    data[:, ::2] *= 10
+    data += 37
+    
+    # create the DataFrame
+    health_data = pd.DataFrame(data, index=index, columns=columns)
+    print(health_data)
+    print(health_data['Guido'])
+    
+```
+
+#### Multiply indexed Series
+
+```python
+    print(series_pop['California', 2000])
+    print(series_pop.loc['California':'New York']) # partial indexing
+    print(series_pop[:, 2000])
+    print(series_pop[series_pop > 22000000]) #  Boolean masks:
+    print(series_pop[['California', 'Texas']]) # fancy indexing
+    
+```
+
+#### Multiply indexed DataFrames
+
+```python
+    print(health_data['Guido', 'HR']) # index
+    # ``loc``, ``iloc``, and ``ix`` indexers
+    print(health_data.iloc[:2, :2])
+    print(health_data.loc[:, ('Bob', 'HR')])
+    # print(health_data.loc[(:, 1), (:, 'HR')]) # these index tuples is not especially convenient;
+    idx = pd.IndexSlice
+    print(health_data.loc[idx[:, 1], idx[:, 'HR']])
+```
+
+#### Sorted and unsorted indices
+
+*Many of the ``MultiIndex`` slicing operations will fail if the index is not sorted.*
+
+For various reasons, partial slices and other similar operations require the levels in the ``MultiIndex`` to be in sorted (i.e., lexographical) order.
+
+Pandas provides a number of convenience routines to perform this type of sorting; examples are the ``sort_index()`` and ``sortlevel()`` methods of the ``DataFrame``.
+
+```python
+
+```
+
+#### Stacking and unstacking indices
+
+```python
+    pop.unstack(level=0)
+    pop.unstack(level=1)
+    pop.unstack().stack()
+```
+
+### Index setting and resetting
+
+Another way to rearrange hierarchical data is to turn the index labels into columns; this can be accomplished with the ``reset_index`` method.
+Calling this on the population dictionary will result in a ``DataFrame`` with a *state* and *year* column holding the information that was formerly in the index.
+For clarity, we can optionally specify the name of the data for the column representation:
+
+```python
+_pop_flat = pop.reset_index(name='population')
+
+pop_flat.set_index(['state', 'year'])_
+
+```
+
+Often when working with data in the real world, the raw input data looks like this and it's useful to build a ``MultiIndex`` from the column values.
+This can be done with the ``set_index`` method of the ``DataFrame``, which returns a multiply indexed ``DataFrame``:
+
+In practice, I find this type of reindexing to be one of the more useful patterns when encountering real-world datasets.
+
+
 
 

@@ -146,10 +146,100 @@ def missing_data():
     print('fillna(method=\'ffill\', axis=1)\r\n', df.fillna(method='ffill', axis=1))
 
 
+def hierarchical_index():
+    index = [('California', 2000), ('California', 2010),
+             ('New York', 2000), ('New York', 2010),
+             ('Texas', 2000), ('Texas', 2010)]
+    pop = [33871648, 37253956,
+           18976457, 19378102,
+           20851820, 25145561]
+    # a bad way
+    series = pd.Series(pop, index=index)
+    print('series: \r\n', series)
+    series[('California', 2010):('Texas', 2000)]
+    series[[i for i in series.index if i[1] == 2010]] # select all values from 2010,
+
+    # a good way
+    index_2 = pd.MultiIndex.from_tuples(index)
+    print('index_2: ', index_2)
+    series_pop = series.reindex(index_2)
+    print('series_pop: \r\n', series_pop)
+    print('series_pop[:, 2010]: \r\n', series_pop[:, 2010]) # access all data for which the second index is 2010
+
+    #  quickly convert a multiply indexed ``Series`` into a conventionally indexed ``DataFrame``:
+    df = series_pop.unstack()
+    print('unstack \r\n', df)
+    print(series_pop.unstack(level=0))
+    print(series_pop.unstack(level=1))
+    print('unstack & stack \r\n', series_pop.unstack().stack())
+
+    pop_df = pd.DataFrame({'total': series_pop,
+                           'under18': [9267089, 9284094,
+                                       4687374, 4318033,
+                                       5906301, 6879014]})
+    print('pop_df: \r\n', pop_df)
+    f_u18 = pop_df['under18'] / pop_df['total']
+    print('pop_df[\'under18\'] / pop_df[\'total\'] \r\n', f_u18)
+    print('f_u18.unstack() \r\n', f_u18.unstack())
+    series_pop.index.names = ['state', 'year']
+    print(series_pop)
+
+    index = pd.MultiIndex.from_product([[2013, 2014], [1, 2]], names=['year', 'visit'])
+    print('index', index)
+    columns = pd.MultiIndex.from_product([['Bob', 'Guido', 'Sue'], ['HR', 'Temp']], names=['subject', 'type'])
+    print('columns', columns)
+    data = np.round(np.random.randn(4, 6), 1) # mock some data
+    data[:, ::2] *= 10
+    data += 37
+    print(data)
+    # create the DataFrame
+    health_data = pd.DataFrame(data, index=index, columns=columns)
+    print(health_data)
+    print(health_data['Guido'])
+
+    print(series_pop['California', 2000])  #  indexing with multiple terms:
+    print(series_pop.loc['California':'New York']) # partial indexing
+    print(series_pop[:, 2000])
+    print(series_pop[series_pop > 22000000]) #  Boolean masks:
+    print(series_pop[['California', 'Texas']]) # fancy indexing
+
+    print(health_data['Guido', 'HR']) # index
+    # ``loc``, ``iloc``, and ``ix`` indexers
+    print(health_data.iloc[:2, :2])
+    print(health_data.loc[:, ('Bob', 'HR')])
+    # print(health_data.loc[(:, 1), (:, 'HR')]) # these index tuples is not especially convenient;
+    idx = pd.IndexSlice
+    print(health_data.loc[idx[:, 1], idx[:, 'HR']])
+
+    print('mean:level=year \r\n', health_data.mean(level='year'))
+    print('mean:axis=1, level=\'type\'\r\n', health_data.mean(axis=1, level='type'))
+
+    pop_flat = series_pop.reset_index(name='population')
+    print(pop_flat)
+    print(pop_flat.set_index(['state', 'year']))
+
+
+def rearranging_multi_index():
+    index = pd.MultiIndex.from_product([['a', 'c', 'b'], [1, 2]])
+    data = pd.Series(np.random.rand(6), index=index)
+    data.index.names = ['char', 'int']
+    print(data)
+    try:
+        data['a':'b']
+    except KeyError as e:
+        print(type(e))
+        print(e)
+    data = data.sort_index()
+    print(data)
+    print('data[\'a\':\'b\'] \r\n', data['a':'b'])
+
+
 if __name__ == '__main__':
     print('Numpy Version:', np.__version__)
     print('Pandas Version:', pd.__version__)
     # series_selection()
     # data_frame_selection()
     # ufunc_index()
-    missing_data()
+    # missing_data()
+    hierarchical_index()
+    # rearranging_multi_index()
