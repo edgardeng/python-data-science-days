@@ -30,3 +30,5 @@
 
 15. [Introduction to Pandas](./day15-pandas-intro/readme.md)
 
+16. [Introduction to Pandas Data Selection](./day16-pandas-data/readme.md)
+
