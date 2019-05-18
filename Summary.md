@@ -27,3 +27,6 @@
 13. [ Matplotlib Introduction](./day13-matplotlib-introduction/readme.md)
 
 14. [ Matplotlib Chart](./day14-matplotlib-chart/readme.md)
+
+15. [Introduction to Pandas](./day15-pandas-intro/readme.md)
+
