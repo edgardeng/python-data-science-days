@@ -35,6 +35,9 @@
 
 16. [Introduction to Pandas Data Selection](./day16-pandas-data)
 
+17. [Introduction to Pandas Data Selection](./day16-pandas-data)
+
+
 
 ## TODO
 
