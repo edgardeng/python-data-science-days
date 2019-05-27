@@ -67,7 +67,69 @@ def concatenation():
     print('df1 \r\n', df1)
 
 
+def join():
+    df1 = pd.DataFrame({'employee': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                        'group': ['Accounting', 'Engineering', 'Engineering', 'HR']})
+    df2 = pd.DataFrame({'employee': ['Lisa', 'Bob', 'Jake', 'Sue'],
+                        'hire_date': [2004, 2008, 2012, 2014]})
+    df3 = pd.merge(df1, df2)
+    print('df1: \r\n', df1, '\r\ndf2: \r\n', df2, '\r\ndf3 = pd.merge(df1, df2): \r\n', df3)
+
+    # Many-to-one joins
+    df4 = pd.DataFrame({'group': ['Accounting', 'Engineering', 'HR'],
+                        'supervisor': ['Carly', 'Guido', 'Steve']})
+    df34 = pd.merge(df3, df4)
+    print('df4: \r\n', df4, '\r\npd.merge(df3, df5): \r\n', df34)
+
+    # Many-to-many joins
+    df5 = pd.DataFrame({'group': ['Accounting', 'Accounting',
+                                  'Engineering', 'Engineering', 'HR', 'HR'],
+                        'skills': ['math', 'spreadsheets', 'coding', 'linux',
+                                   'spreadsheets', 'organization']})
+    df15 = pd.merge(df1, df5)
+    print('df5: \r\n', df5, '\r\npd.merge(df1, df5): \r\n', df15)
+
+    pd.merge(df1, df2, on='employee')
+
+    # The left_on and right_on keywords
+    df6 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                        'salary': [70000, 80000, 120000, 90000]})
+    df7 = pd.merge(df1, df6, left_on="employee", right_on="name")
+    print('df6: \r\n', df6, '\r\n pd.merge(df1, df6,left_on=employee, right_on=name): \r\n', df7)
+    print(df7.drop('name', axis=1)) # The result has a redundant column that we can drop
+
+    # The left_index and right_index keywords
+    df1a = df1.set_index('employee')
+    df2a = df2.set_index('employee')
+    print('\r\n df1a: \r\n', df1a, 'df2a: \r\n', df2a)
+    m1 = pd.merge(df1a, df2a, left_index=True, right_index=True)
+    print('merge(df1a, df2a, left_index=True, right_index=True) : \r\n', m1)
+    df1a.join(df2a) # mplement the join() method, which performs a merge that defaults to joining on indices
+    # mix indices and columns
+    m2 = pd.merge(df1a, df6, left_index=True, right_on='name')
+    print('merge(df1a, df6, left_index=True, right_on=name) : \r\n', m2)
+
+    df8 = pd.DataFrame({'name': ['Peter', 'Paul', 'Mary'],
+                        'food': ['fish', 'beans', 'bread']},
+                       columns=['name', 'food'])
+    df9 = pd.DataFrame({'name': ['Mary', 'Joseph'],
+                        'drink': ['wine', 'beer']},
+                       columns=['name', 'drink'])
+    print('df8: \r\n', df8, '\r\ndf9: \r\n', df9)
+    print('pd.merge(df8, df9) \r\n', pd.merge(df8, df9))
+    print('pd.merge(df8, df9, how=outer) \r\n', pd.merge(df8, df9, how='outer'))
+    print('pd.merge(df8, df9, how=left) \r\n', pd.merge(df8, df9, how='left'))
+
+    df10 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                        'rank': [1, 2, 3, 4]})
+    df11 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                        'rank': [3, 1, 4, 2]})
+    print('pd.merge(df10, df11,on="name") \r\n', pd.merge(df10, df11,  on="name"))
+    print('pd.merge(df10, df11, on=name, suffixes=[_L, _R]) \r\n', pd.merge(df10, df11, on="name", suffixes=["_L", "_R"]))
+
+
 if __name__ == '__main__':
     print('Numpy Version:', np.__version__)
     print('Pandas Version:', pd.__version__)
-    concatenation()
+    # concatenation()
+    join()

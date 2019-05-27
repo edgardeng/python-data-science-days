@@ -30,5 +30,10 @@
 
 15. [Introduction to Pandas](./day15-pandas-intro/readme.md)
 
-16. [Introduction to Pandas Data Selection](./day16-pandas-data/readme.md)
+16. [Pandas Data Selection](./day16-pandas-data/readme.md)
 
+17. [Pandas Data Operation](./day17-pandas-data-operate/readme.md)
+
+18. [Pandas Data Aggregation](./day18-pandas-aggregation/readme.md)
+
+19. [Pandas Data I/O](./day19-pandas-io/readme.md)

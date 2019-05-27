@@ -33,9 +33,9 @@
 
 15. [Introduction to Pandas](./day15-pandas-intro)
 
-16. [Introduction to Pandas Data Selection](./day16-pandas-data)
+16. [Pandas Data Selection](./day16-pandas-data)
 
-17. [Introduction to Pandas Data Selection](./day16-pandas-data)
+17. [Pandas Data Operation](./day17-pandas-data-operate)
 
 
 

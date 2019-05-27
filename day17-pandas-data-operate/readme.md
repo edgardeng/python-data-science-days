@@ -2,7 +2,7 @@
 
 ### Combining Datasets
 
-#### Recall: Concatenation of NumPy Arrays
+#### Concatenation of NumPy Arrays
 
 `np.concatenate`: combine the contents of two or more arrays into a single array:
 
@@ -74,7 +74,6 @@ pd.concat([x, y], keys=['x', 'y'])
 
 In practice, data from different sources might have different sets of column names, and pd.concat offers several options in this case.
 
-
 By default, the entries for which no data is available are filled with NA values.
 
 ```python
@@ -89,8 +88,6 @@ pd.concat([df5, df6], join_axes=[df5.columns])
 
 ```
 
-
-
 #### The append() method¶
 
 Series and DataFrame objects have an append method that can accomplish the same thing. For example, rather than calling pd.concat([df1, df2]), you can simply call df1.append(df2)
@@ -98,8 +95,96 @@ Series and DataFrame objects have an append method that can accomplish the same 
 ```python
 df1.append(df2)
 ```
+
 > Note: 
 append() method in Pandas does not modify the original object–instead it creates a new object with the combined data.
 
+### Joins
+
+The pd.merge() function implements a number of types of joins: the one-to-one, many-to-one, and many-to-many joins. 
      
-     
+```python
+# One-to-one joins
+df1 = pd.DataFrame({'employee': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                    'group': ['Accounting', 'Engineering', 'Engineering', 'HR']})
+df2 = pd.DataFrame({'employee': ['Lisa', 'Bob', 'Jake', 'Sue'],
+                    'hire_date': [2004, 2008, 2012, 2014]})
+df3 = pd.merge(df1, df2)
+
+# Many-to-one joins
+df4 = pd.DataFrame({'group': ['Accounting', 'Engineering', 'HR'],
+                    'supervisor': ['Carly', 'Guido', 'Steve']})
+pd.merge(df3, df4)
+
+# Many-to-many joins
+df5 = pd.DataFrame({'group': ['Accounting', 'Accounting',
+                              'Engineering', 'Engineering', 'HR', 'HR'],
+                    'skills': ['math', 'spreadsheets', 'coding', 'linux',
+                               'spreadsheets', 'organization']})
+pd.merge(df1, df5)
+
+```     
+
+#### Specification of the Merge Key
+
+```python
+# The on keyword
+pd.merge(df1, df2, on='employee')
+
+# The left_on and right_on keywords
+df3 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                    'salary': [70000, 80000, 120000, 90000]})
+df6 = pd.merge(df1, df3, left_on="employee", right_on="name")
+
+df6.drop('name', axis=1) # The result has a redundant column that we can drop 
+
+# The left_index and right_index keywords
+df1a = df1.set_index('employee')
+df2a = df2.set_index('employee')
+pd.merge(df1a, df2a, left_index=True, right_index=True)
+df1a.join(df2a) # mplement the join() method, which performs a merge that defaults to joining on indices
+
+# mix indices and columns
+pd.merge(df1a, df3, left_index=True, right_on='name')
+
+```
+
+Most simply, specify the name of the key column using the on keyword, which takes a column name or a list of column names
+
+At times you may wish to merge two datasets with different column names;  In this case, we can use the left_on and right_on keywords to specify the two column names
+
+#### Specifying Set Arithmetic for Joins
+
+```python
+df6 = pd.DataFrame({'name': ['Peter', 'Paul', 'Mary'],
+                    'food': ['fish', 'beans', 'bread']},
+                   columns=['name', 'food'])
+df7 = pd.DataFrame({'name': ['Mary', 'Joseph'],
+                    'drink': ['wine', 'beer']},
+                   columns=['name', 'drink'])
+pd.merge(df6, df7)
+pd.merge(df6, df7, how='outer')
+
+pd.merge(df6, df7, how='left')
+
+```
+Merge two datasets , By default, the result contains the intersection of the two sets of inputs; 
+
+this is what is known as an inner join. We can specify this explicitly using the how keyword, which defaults to "inner"
+
+Other options for the how keyword are 'outer', 'left', and 'right'. 
+
+#### Overlapping Column Names
+
+Because the output would have two conflicting column names, the merge function automatically appends a suffix _x or _y to make the output columns unique. 
+
+If these defaults are inappropriate, it is possible to specify a custom suffix using the suffixes keyword
+ 
+```python
+df8 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                    'rank': [1, 2, 3, 4]})
+df9 = pd.DataFrame({'name': ['Bob', 'Jake', 'Lisa', 'Sue'],
+                    'rank': [3, 1, 4, 2]})
+pd.merge(df8, df9, on="name")
+pd.merge(df8, df9, on="name", suffixes=["_L", "_R"])
+```
