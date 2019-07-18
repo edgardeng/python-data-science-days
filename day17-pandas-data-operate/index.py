@@ -96,7 +96,7 @@ def join():
                         'salary': [70000, 80000, 120000, 90000]})
     df7 = pd.merge(df1, df6, left_on="employee", right_on="name")
     print('df6: \r\n', df6, '\r\n pd.merge(df1, df6,left_on=employee, right_on=name): \r\n', df7)
-    print(df7.drop('name', axis=1)) # The result has a redundant column that we can drop
+    print(df7.drop('name', axis=1))  # The result has a redundant column that we can drop
 
     # The left_index and right_index keywords
     df1a = df1.set_index('employee')
@@ -104,7 +104,7 @@ def join():
     print('\r\n df1a: \r\n', df1a, 'df2a: \r\n', df2a)
     m1 = pd.merge(df1a, df2a, left_index=True, right_index=True)
     print('merge(df1a, df2a, left_index=True, right_index=True) : \r\n', m1)
-    df1a.join(df2a) # mplement the join() method, which performs a merge that defaults to joining on indices
+    df1a.join(df2a)  # implement the join() method, which performs a merge that defaults to joining on indices
     # mix indices and columns
     m2 = pd.merge(df1a, df6, left_index=True, right_on='name')
     print('merge(df1a, df6, left_index=True, right_on=name) : \r\n', m2)
