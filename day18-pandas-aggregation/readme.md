@@ -107,3 +107,26 @@ decade = decade.astype(str) + 's'
 decade.name = 'decade'
 planets.groupby(['method', decade])['number'].sum().unstack().fillna(0)
 ```
+
+### Pivot Tables 透视表
+
+The pivot table takes simple column-wise data as input, and groups the entries into a two-dimensional table that provides a multidimensional summarization of the data. 
+
+The full call signature of the pivot_table method of DataFrames is as follows:
+
+```python
+# call signature as of Pandas 0.18
+DataFrame.pivot_table(data, values=None, index=None, columns=None,
+                      aggfunc='mean', fill_value=None, margins=False,
+                      dropna=True, margins_name='All')
+```
+
+Example:
+
+```python
+    births = pd.read_csv('../assets/data/births.csv')
+    print(births.head()) # Taking a look at the data,
+    births.pivot_table('births', index='year', columns='gender', aggfunc='sum').plot()
+    plt.ylabel('total births per year')
+    plt.show()
+```
