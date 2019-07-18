@@ -59,4 +59,7 @@ def play_thread_class():
 
 if __name__ == '__main__':
     # play()
-    play_thread_class()
+    # play_thread_class()
+    a = 'ssss.png'
+    b = a.replace('png', 'json')
+    print(b)
