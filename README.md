@@ -37,6 +37,22 @@
 
 17. [Pandas Data Operation](./day17-pandas-data-operate)
 
+18. [Pandas Aggregation](./day18-pandas-aggregation)
+
+19. [Pandas I/O](./day19-pandas-io)
+
+20. [Pandas String](./day20-pandas-string)
+
+21. [Pandas Time Series](./day21-pandas-time-series)
+
+22. [High-Performance Pandas: `eval() and query()`](./day22-pandas-eval-and-query)
+
+23. [Matplot More](./day23-matplot-more)
+
+24. [Matplot Custom](./day24-matplot-custom)
+
+
+
 
 
 ## TODO
@@ -73,6 +89,8 @@ gitbook serve
 
 * [Text Books in Data Science](https://github.com/chaconnewu/free-data-science-books): books on machine learning, data mining, statistics, data visualization etc.
 
+* [Pandas on PyVideo](https://pyvideo.org/search?q=pandas) tutorials
+
 #### Algorithms
 
 * [Data Science Algorithms](https://github.com/nborwankar/LearnDataScience): algorithms such as Linear Regression, Logistic Regression, K-Mean Clustering, Random Forest.
@@ -104,3 +122,13 @@ gitbook serve
 #### Data Visualization
 
 * [matplotlib](https://github.com/matplotlib/matplotlib): plotting with Python
+
+* [seaborn](https://github.com/mwaskom/seaborn): a library for making statistical graphics in Python. It is built on top of matplotlib and closely integrated with pandas data structures.
+
+* [Bokeh](http://bokeh.pydata.org): JavaScript visualization library with a Python frontend that creates highly interactive visualizations capable of handling very large and/or streaming datasets. 
+
+* [Plotly](http://plot.ly) is the eponymous open source product of the Plotly company, and is similar in spirit to Bokeh. Because Plotly is the main product of a startup, it is receiving a high level of development effort. Use of the library is entirely free.
+
+* [Vispy](http://vispy.org/) is an actively developed project focused on dynamic visualizations of very large datasets. Because it is built to target OpenGL and make use of efficient graphics processors in your computer, it is able to render some quite large and stunning visualizations.
+
+* [Vega](https://vega.github.io/) and [Vega-Lite](https://vega.github.io/vega-lite) are declarative graphics representations, and are the product of years of research into the fundamental language of data visualization. The reference rendering implementation is JavaScript, but the API is language agnostic. There is a Python API under development in the [Altair](https://altair-viz.github.io/) package. Though as of summer 2016 it's not yet fully mature, I'm quite excited for the possibilities of this project to provide a common reference point for visualization in Python and other languages.

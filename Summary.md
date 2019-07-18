@@ -37,3 +37,14 @@
 18. [Pandas Data Aggregation](./day18-pandas-aggregation/readme.md)
 
 19. [Pandas Data I/O](./day19-pandas-io/readme.md)
+
+20. [Pandas String](./day20-pandas-string/readme.md)
+
+21. [Pandas Time Series](./day21-pandas-time-series/readme.md)
+
+22. [High-Performance Pandas: `eval() and query()`](./day22-pandas-eval-and-query/readme.md)
+
+23. [Matplot More](./day23-matplot-more/readme.md)
+
+24. [Matplot Custom](./day24-matplot-custom/readme.md)
+
