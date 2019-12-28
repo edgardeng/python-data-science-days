@@ -52,7 +52,7 @@ def data_frame_selection():
     print('data.data.ix[:3, :\'pop\']:\r\n', data.ix[:3, :'pop'])
     # combine masking and fancy indexing
     print('data.loc[data.density > 100, [\'pop\', \'density\']]:\r\n')
-    print(data.loc[data.density > 100, ['pop', 'density']])
+    print(data.loc[data.x > 100, ['pop', 'density']])
     data.iloc[0, 2] = 90
     print('after data.iloc[0, 2] = 90:\r\n')
     print(data)
@@ -61,7 +61,9 @@ def data_frame_selection():
 def ufunc_index():
     rng = np.random.RandomState(42)
     ser = pd.Series(rng.randint(0, 10, 4))
-    df = pd.DataFrame(rng.randint(0, 10, (3, 4)), columns=['A', 'B', 'C', 'D'])
+    arr = rng.randint(0, 10, (3, 4))
+    print(arr)
+    df = pd.DataFrame(arr, columns=['A', 'B', 'C', 'D'])
     print('Series:\r\n', ser)
     print('np.exp(ser):\r\n', np.exp(ser))
     print('DataFrame:\r\n', df)
@@ -239,7 +241,7 @@ if __name__ == '__main__':
     print('Pandas Version:', pd.__version__)
     # series_selection()
     # data_frame_selection()
-    # ufunc_index()
+    ufunc_index()
     # missing_data()
-    hierarchical_index()
+    # hierarchical_index()
     # rearranging_multi_index()

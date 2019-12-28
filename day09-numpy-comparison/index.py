@@ -52,6 +52,6 @@ def keywords_vs_operators():
 
 if __name__ == '__main__':
     print('Numpy Version', np.__version__)
-    # compare_operate()
-    # compare_count()
-    keywords_vs_operators()
+    compare_operate()
+    compare_count()
+    # keywords_vs_operators()

@@ -48,3 +48,11 @@
 
 24. [Matplot Custom](./day24-matplot-custom/readme.md)
 
+25. [Matplot 3d](./day25-matplot-3dim/readme.md)
+
+26. [Matplot Geo](./day26-matplot-geo/readme.md)
+
+27. [Machine Learning](./day27-machine-learning/readme.md)
+
+28. [Scikit-Learn](./day28-scikit-learn/readme.md)
+
